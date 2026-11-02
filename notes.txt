@@ -1,2 +1,5 @@
 Temporary
 notes
+
+First staged line
+Second unstaged line
