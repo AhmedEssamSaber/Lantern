@@ -25,6 +25,16 @@ def main():
     
 
 
+
+    
+
+
+    export_parser = sub.add_parser("export")
+    export_parser.add_argument(
+        "--csv",
+        action="store_true",
+        help="Export tasks as CSV"
+    )
     args = parser.parse_args()
 
     if args.command == "add":
