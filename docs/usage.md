@@ -7,7 +7,10 @@ Lantern is a simple command-line task tracker.
 
 
 
+## Empty Task List
 
+When no tasks are available, the list command
+displays a clear empty-list message.
 
 
 
