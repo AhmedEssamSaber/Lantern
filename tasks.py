@@ -3,5 +3,11 @@ def add_task(title):
     return task
 
 
+
 def list_tasks(tasks):
-    return tasks
+    if not tasks:
+        print("No tasks found.")
+        return
+
+    for task in tasks:
+        print(task)

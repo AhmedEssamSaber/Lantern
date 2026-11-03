@@ -1,5 +1,8 @@
 import argparse
 
+import storage
+from tasks import list_tasks
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -16,7 +19,14 @@ def main():
         print("Task added:", args.title)
 
     elif args.command == "list":
-        print("Listing tasks")
+      tasks = storage.load()
+      if not tasks:
+        print("No tasks found.")
+      else:
+        if args.sort:
+          tasks.sort(key=lambda x: x["title"])
+        list_tasks(tasks)
+
 
 
 if __name__ == "__main__":
