@@ -12,7 +12,7 @@ def main():
     list_parser.add_argument(
         "--done",
         action="store_true",
-        help="Show only completed tasks"
+        help="Show the only completed tasks"
     )
 
     args = parser.parse_args()
