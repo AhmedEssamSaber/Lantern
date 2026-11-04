@@ -11,7 +11,14 @@ def main():
     add_parser.add_argument("title")
 
     list_parser = sub.add_parser("list")
+
     list_parser.add_argument("--sort", action="store_true", help="Sort tasks by title")
+
+    list_parser.add_argument(
+        "--done",
+        action="store_true",
+        help="Show the only completed tasks"
+    )
 
     args = parser.parse_args()
 

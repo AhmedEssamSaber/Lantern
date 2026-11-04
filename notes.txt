@@ -5,3 +5,5 @@ First staged line
 Second unstaged line
 
 This line is for the amend drill.
+
+This line is for the reflog recovery drill.
