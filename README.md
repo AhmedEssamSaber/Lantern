@@ -9,3 +9,7 @@ A lightweight command-line task tracker built with Python, designed to practice 
 |---|---|
 | Ahmed Essam | AhmedEssamSaber |
 | Ehab Ragab | Ehabragb |
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
