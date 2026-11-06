@@ -1,6 +1,6 @@
 import argparse
-
 import storage
+from export import export_tasks
 
 
 def main():
@@ -12,22 +12,17 @@ def main():
 
     list_parser = sub.add_parser("list")
 
-
-    list_parser.add_argument("--sort", action="store_true", help="Sort tasks by title")
+    list_parser.add_argument(
+        "--sort",
+        action="store_true",
+        help="Sort tasks by title"
+    )
 
     list_parser.add_argument(
         "--done",
         action="store_true",
-        help="Show the only completed tasks"
+        help="Show completed tasks only"
     )
-
-
-    
-
-
-
-    
-
 
     export_parser = sub.add_parser("export")
     export_parser.add_argument(
@@ -35,24 +30,34 @@ def main():
         action="store_true",
         help="Export tasks as CSV"
     )
+
     args = parser.parse_args()
 
     if args.command == "add":
         print("Task added:", args.title)
 
     elif args.command == "list":
-
         tasks = storage.load()
+
+        if args.done:
+            tasks = [task for task in tasks if task.get("done", False)]
+
         if args.sort:
-          tasks = sorted(tasks, key=lambda x: x["title"])
+            tasks = sorted(tasks, key=lambda task: task["title"].lower())
 
-        tasks = storage.load()
-    if not tasks:
-        print("No tasks found.")
-    else:
-        
+        if not tasks:
+            print("No tasks found.")
+        else:
+            print("Listing tasks")
+            for task in tasks:
+                print(task["title"])
 
-        print("Listing tasks")
+    elif args.command == "export":
+        if args.csv:
+            tasks = storage.load()
+            export_tasks(tasks)
+        else:
+            export_parser.print_help()
 
 
 if __name__ == "__main__":
